@@ -16,6 +16,22 @@ Let us start with the following ideas
 
 One of the biggest complaints I hear around TDD is the *time* aspect. It takes *time* to write good tests, and it takes even longer to fix them. In large codebases touched by many hands, the problem of fixing tests worsens. Changing or refactoring a single existing feature may break dozens of tests that are scattered across the codebase, taking all the more time to fix.
 
+The goal of this extension is to provide the tooling around test discovery and execution to make TDD as fun as possible.
+
+## The main algorithm
+
+So this extension is supposed to make identifying covered code easier. How is this done?
+
+We start from a special kind of generated coverage file, such as the included [contextcov.json](https://github.com/PSU3D0/CodeCovPlug/blob/main/contextcov.json). This file was generated from a simple script that parsed out coverage data from the 
+python Coverage library with [dynamic contexts](https://coverage.readthedocs.io/en/6.3.2/contexts.html#dynamic-contexts) enabled.
+
+From here the idea is simple. The json file contains a mapping of file paths that correspond with line numbers, with each line number corresponding to a list of paths to tests. We have all the data we need.
+
+## Contributing
+
+PR's are welcome! The code is **heavily** based on the excellent [git-lens](https://github.com/gitkraken/vscode-gitlens) project, particularly around the event driven system and hover logic. I recommend using that project as a reference for creating best-practice Vscode extensions in Typescript.
+
+
 ## Planned Features / Roadmap
 
 
